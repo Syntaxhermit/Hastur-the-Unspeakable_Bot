@@ -1,24 +1,17 @@
 # Hastur's Soul
 import discord
 import PuzzleBox
+from discord.ext import commands
 
-client = discord.Client()
-
-@client.event
-async def on_message(message):
-    # we do not want the bot to reply to itself
-    if message.author == client.user:
-        return
-
-    if message.content.startswith('!hello'):
-        msg = 'Hello {0.author.mention}'.format(message)
-        await client.send_message(message.channel, msg)
-
-@client.event
+bot = commands.Bot(command_prefix="!")
+@bot.command()
+async def hello(ctx):
+    await ctx.send("I didn't really want to talk to you anyways")
+@bot.event
 async def on_ready():
     print('Logged in as')
-    print(client.user.name)
-    print(client.user.id)
+    print(bot.user.name)
+    print(bot.user.id)
     print('------')
 
-client.run(PuzzleBox.HasturToken)
+bot.run(PuzzleBox.HasturToken)
