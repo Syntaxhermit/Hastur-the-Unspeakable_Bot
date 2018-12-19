@@ -1,13 +1,12 @@
-# Place holder
+# Hastur's Soul
 import discord
-
-Token = 'XXXXXX'
+import PuzzleBox
 
 client = discord.Client()
 
 @client.event
 async def on_message(message):
-    # We do not want the bot to reply to itsef
+    # we do not want the bot to reply to itself
     if message.author == client.user:
         return
 
@@ -22,4 +21,4 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
-client.run(Token)
+client.run(PuzzleBox.HasturToken)
