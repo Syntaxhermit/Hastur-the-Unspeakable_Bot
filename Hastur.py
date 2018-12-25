@@ -1,17 +1,20 @@
 # Hastur's Soul
-import discord
-import PuzzleBox
 from discord.ext import commands
+import discord, PuzzleBox
 
-bot = commands.Bot(command_prefix="!")
-@bot.command()
+hastur = commands.Bot("$")
+
+
+@hastur.command
 async def hello(ctx):
-    await ctx.send("I didn't really want to talk to you anyways")
-@bot.event
-async def on_ready():
-    print('Logged in as')
-    print(bot.user.name)
-    print(bot.user.id)
-    print('------')
+    MA = ctx.author
+    MC = ctx.channel
+    print("{} said hello".format(MA))
+    await MC.send("Hello, {}!".format(MA.name))
 
-bot.run(PuzzleBox.HasturToken)
+@hastur.event
+async def on_ready():
+    print("Hastur has Risen!")
+    print("Logged in as: {}".format(hastur.user.name))
+
+hastur.run(PuzzleBox.HasturToken)
